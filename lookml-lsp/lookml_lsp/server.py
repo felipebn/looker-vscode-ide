@@ -1,10 +1,16 @@
-from pygls.features import COMPLETION
+from pygls.capabilities import COMPLETION
 from pygls.server import LanguageServer
-from pygls.types import CompletionItem, CompletionList, CompletionOptions, CompletionParams
+from pygls.lsp import CompletionItem, CompletionList, CompletionOptions, CompletionParams
 
-server = LanguageServer()
+class LookMLLanguageServer(LanguageServer):
+    def __init__(self):
+        super().__init__()
 
-@server.feature(COMPLETION, CompletionOptions(trigger_characters=[',']))
+
+lookml_server = LookMLLanguageServer()
+
+
+@lookml_server.feature(COMPLETION, CompletionOptions(trigger_characters=[',']))
 def completions(params: CompletionParams):
     """Returns completion items."""
     return CompletionList(
@@ -17,4 +23,3 @@ def completions(params: CompletionParams):
             CompletionItem(label='}'),
         ]
     )
-

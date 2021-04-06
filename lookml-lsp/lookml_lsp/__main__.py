@@ -1,8 +1,7 @@
 import argparse
-import inspect
 import logging
 
-from .server import server
+from lookml_lsp import lookml_server
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger('pygls.protocol').setLevel(logging.WARN)
@@ -30,9 +29,9 @@ def main():
     args = parser.parse_args()
 
     if args.tcp:
-        server.start_tcp(args.host, args.port)
+        lookml_server.start_tcp(args.host, args.port)
     else:
-        server.start_io()
+        lookml_server.start_io()
 
 
 if __name__ == '__main__':
