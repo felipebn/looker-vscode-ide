@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from lookml_lsp import lookml_server
+from lookml_lsp.server import lookml_server
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger('pygls.protocol').setLevel(logging.WARN)
