@@ -18,10 +18,31 @@
 		"vscode": "^1.55.0"
 	},
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:lookml"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
+		"languages": [
+			{
+				"id": "lookml",
+				"aliases": [
+					"LookML"
+				],
+				"extensions": [
+					".lkml"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "lookml",
+				"scopeName": "source.lookml",
+				"path": "./client/syntaxes/lookml.tmGrammar.json",
+				"embeddedLanguages": {
+					"meta.embedded.block.sql": "source.sql"
+				}
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "Example configuration",
