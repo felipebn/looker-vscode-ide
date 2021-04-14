@@ -1,6 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "LookML",
+	"scopeName": "source.lkml",
 	"patterns": [
 		{
 			"include": "#field"
@@ -10,6 +11,9 @@
 		},
 		{
 			"include": "#derivedTable"
+		},
+		{
+			"include":"#model-parameters-basic"
 		}
 	],
 	"repository": {
@@ -21,18 +25,10 @@
 				"0": {
 					"patterns": [
 						{ 
-							"name": "keyword.control.test0",
+							"name": "keyword.control.view.fields",
 							"match": "dimension"
 						}
 					]
-				},
-				"1": {
-					"name": "keyword.operator.test1",
-					"patterns": []
-				},
-				"3": {
-					"name": "keyword.other.test2",
-					"patterns": []
 				}
 			},
 			"patterns": [{
@@ -167,16 +163,25 @@
 				}
 			]
 		},
-		"sets": {
-			"nameContent": "source.",
-			"patterns": []
-		},
-		"link": {
-			"name": "test",
-			"begin": "(link:).*?\\{",
-			"end": "}\\n",
-			"patterns": []			
+		"model-parameters-basic":{
+			"contentName":"keyword",
+			"begin": "(?:connection:|include:|label:|persist_for:|persist_with:)",
+			"end": "$",
+			"captures": {
+				"0": {
+					"patterns": [
+						{ 
+							"name": "keyword.control.model.parameters.basic",
+							"match": "[a-z_]*"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "#strings"
+				}
+			]
 		}
-	},
-	"scopeName": "source.lkml"
+	}
 }

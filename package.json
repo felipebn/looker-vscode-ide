@@ -18,7 +18,8 @@
 		"vscode": "^1.55.0"
 	},
 	"activationEvents": [
-		"onLanguage:lookml"
+		"onLanguage:lookml",
+		"onLanguage:html1"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
@@ -36,8 +37,8 @@
 		"grammars": [
 			{
 				"language": "lookml",
-				"scopeName": "source.lookml",
-				"path": "./client/syntaxes/lookml.tmGrammar.json",
+				"scopeName": "source.lkml",
+				"path": "./syntaxes/lookml.tmGrammar.json",
 				"embeddedLanguages": {
 					"meta.embedded.block.sql": "source.sql"
 				}
