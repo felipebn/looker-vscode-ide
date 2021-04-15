@@ -1,0 +1,86 @@
+{
+	"name": "looker-vscode-ide",
+	"description": "Looker VSCode IDE",
+	"author": "felipebn@github",
+	"license": "MIT",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/felipebn/looker-vscode-ide/"
+	},
+	"publisher": "vscode",
+	"categories": [],
+	"keywords": [
+		"looker",
+		"lookml"
+	],
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"activationEvents": [
+		"onLanguage:lookml",
+		"onLanguage:html1"
+	],
+	"main": "./client/out/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "lookml",
+				"aliases": [
+					"LookML"
+				],
+				"extensions": [
+					".lkml"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "lookml",
+				"scopeName": "source.lkml",
+				"path": "./syntaxes/lookml.tmGrammar.json",
+				"embeddedLanguages": {
+					"meta.embedded.block.sql": "source.sql"
+				}
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Example configuration",
+			"properties": {
+				"languageServerExample.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"languageServerExample.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VS Code and the language server."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"postinstall": "cd client && npm install && cd ../lookml-lsp && pip3 install ."
+	},
+	"devDependencies": {
+		"@types/mocha": "^8.2.2",
+		"@types/node": "^12.12.0",
+		"@typescript-eslint/eslint-plugin": "^4.21.0",
+		"@typescript-eslint/parser": "^4.21.0",
+		"eslint": "^7.23.0",
+		"mocha": "^8.3.2",
+		"typescript": "^4.2.3"
+	}
+}

@@ -1,0 +1,3 @@
+- Create named block definition to match "xxx: www {}" cases
+- Simple definitions should be created in a global level
+- Refactor most of the grammar to be more easy to grasp
